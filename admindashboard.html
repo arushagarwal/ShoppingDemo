@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="css/design.css">
+
+    <script src="https://www.gstatic.com/firebasejs/5.1.0/firebase.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/products/products.js"></script>
+    <script src="js/admin/dbAdminOpr.js"></script>
+    <script src="js/products/AdminProdcontroller.js"></script>
+</head>
+
+<body>
+
+    <div class="nav-side-menu">
+        <div class="brand">
+            <img src="https://d21kp9itql721v.cloudfront.net/cdn/834392/skin/frontend/rwd/default/images/media/logo2.png"></img>
+        </div>
+        <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+
+        <div class="menu-list">
+
+            <ul id="menu-content" class="menu-content collapse out">
+                <li>
+                    <a href="#">
+                        <i class="fa fa-dashboard fa-lg fa-fw sidebar-icon"></i> Dashboard</a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <i class="fa fa-calendar fa-lg fa-fw sidebar-icon"></i> Products</a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <i class="fa fa-bar-chart fa-lg fa-fw sidebar-icon"></i> Orders</a>
+                </li>
+
+                <li data-toggle="collapse" data-target="#manage" class="collapsed">
+                    <a href="#">
+                        <i class="fa fa-puzzle-piece fa-lg fa-fw sidebar-icon"></i> Feature Produts
+                        <span class="arrow"></span>
+                    </a>
+                </li>
+                <ul class="sub-menu collapse" id="manage">
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-angle-double-right"></i> Devices</a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-angle-double-right"></i> Groups</a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-angle-double-right"></i> SIM Cards</a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-angle-double-right"></i> Users</a>
+                    </li>
+                </ul>
+
+                <li data-toggle="collapse" data-target="#settings" class="collapsed">
+                    <a href="#">
+                        <i class="fa fa-sliders fa-lg fa-fw sidebar-icon"></i> Settings
+                        <span class="arrow"></span>
+                    </a>
+                </li>
+                <ul class="sub-menu collapse" id="settings">
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-angle-double-right"></i> General</a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-angle-double-right"></i> Security</a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-angle-double-right"></i> Notifications</a>
+                    </li>
+                </ul>
+            </ul>
+        </div>
+    </div>
+
+    <div class="main">
+        <div class="container">
+            <h1> Welcome to admin dashboard</h1>
+        </div>
+        <div class="text-right">
+            <button class="btn btn-danger" id="logout">Logout</button>
+        </div>
+        <br>
+        <br>
+        <button class="btn btn-primary" id="additem">Add new Products</button>
+        <button class="btn btn-primary" id="updateitem">Update Product</button>
+        <button class="btn btn-primary" id="deleteitems">Delete Selected products</button>
+        <br>
+        <br>
+        <div class="container" style="display: flex;justify-content:space-between">
+            <div class="input-group mb-3" style="width: 30%">
+                <select class="custom-select" id="category">
+                    <option selected>Select a Category</option>
+                    <option id="topseller">Top Seller</option>
+                    <option id="discounted">Discounted</option>
+                    <option id="fresh">Fresh Arrival</option>
+                </select>
+                <div class="input-group-append">
+                    <label class="input-group-text">Filter</label>
+                </div>
+            </div>
+
+            <div class="input-group mb-3" style="width: 30%">
+                <select class="custom-select" id="sort">
+                    <option selected>Sort the list</option>
+                    <option id="byprice">By price</option>
+                    <option id="byname">By name</option>
+                    <option id="bysize">By size</option>
+                    <option id="bydiscount">By discount</option>
+                </select>
+                <div class="input-group-append">
+                    <label class="input-group-text">Sort</label>
+                </div>
+            </div>
+
+            <div class="input-group mb-3" style="width:30%">
+                <input type="text" class="form-control" placeholder="Search a product" id="search">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" id="searchbtn">Search</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="myform">
+
+        </div>
+
+        <table>
+            <thead>
+                <th>Select</th>
+                <th>Brand</th>
+                <th>Category</th>
+                <th>Color</th>
+                <th>Description</th>
+                <th>Discount</th>
+                <th>ProductId</th>
+                <th colspan="2">Images</th>
+                <th>isDiscounted</th>
+                <th>Price</th>
+                <th>Size</th>
+            </thead>
+            <tbody id="productlist">
+
+            </tbody>
+        </table>
+
+
+
+
+    </div>
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="css/bootstrap/bootstrap.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="css/design.css">
+
+    <script src="https://www.gstatic.com/firebasejs/5.1.0/firebase.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/products/products.js"></script>
+    <script src="js/user/userDBopr.js"></script>
+    <script src="js/user/userController.js"></script>
+    <script src="js/user/categorycontroller.js"></script>
+</head>
+<body>
+    
+        <div class="nav-side-menu">
+                <div class="brand">
+                    <img src="https://d21kp9itql721v.cloudfront.net/cdn/834392/skin/frontend/rwd/default/images/media/logo2.png"></img>
+                </div>
+                <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+        
+                <div class="menu-list">
+        
+                    <ul id="menu-content" class="menu-content collapse out">
+
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-dashboard fa-lg fa-fw sidebar-icon"></i> Filters</a>
+                            </li>
+        
+                        <li data-toggle="collapse" data-target="#manage" class="collapsed">
+                            <a href="#">
+                                <i class="fa fa-puzzle-piece fa-lg fa-fw sidebar-icon"></i>Brands
+                                <span class="arrow"></span>
+                            </a>
+                        </li>
+                        <ul class="sub-menu collapse" id="manage">
+                            <li id="nike">
+                                <a href="#">Nike</a>
+                            </li>
+                            <li id="puma">
+                                <a href="#">Puma</a>
+                            </li>
+                            <li id="adidas">
+                                <a href="#">Adidas</a>
+                            </li>
+                            <li id="lotto">
+                                <a href="#">Lotto</a>
+                            </li>
+                        </ul>
+        
+                        <li data-toggle="collapse" data-target="#settings" class="collapsed">
+                            <a href="#">
+                                <i class="fa fa-sliders fa-lg fa-fw sidebar-icon"></i> Category
+                                <span class="arrow"></span>
+                            </a>
+                        </li>
+                        <ul class="sub-menu collapse" id="settings">
+                            <li id="men">
+                                <a href="#">Men</a>
+                            </li>
+                            <li id="women">
+                                <a href="#">Women</a>
+                            </li>
+                            <li id="children">
+                                <a href="#">Children</a>
+                            </li>
+                        </ul>
+                        <li id="showall">
+                            <a href="#">
+                                <i class="fa fa-dashboard fa-lg fa-fw sidebar-icon"></i> Show all</a>
+                        </li>
+                    </ul>
+                </div>
+        </div>
+            <div class="main">
+                <div class="jumbotron">
+                    <h1 id="name" class="text-center">discounted</h1>
+                    <br><br>
+                    <ul class="nav">
+                            <li class="nav-item">
+                              <a class="navbar-brand">Sort By</a>
+                            </li>
+                            <li class="nav-item" id="price">
+                              <a class="nav-link" href="#">Prize(low to high)</a>
+                            </li>
+                            <li class="nav-item" id="opp_price">
+                              <a class="nav-link" href="#">Prize(high to low)</a>
+                            </li>
+                            <li class="nav-item" id="size">
+                              <a class="nav-link " href="#">Size</a>
+                            </li>
+                            <li class="nav-item">
+                                <div class="carticon"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Shopping_cart_font_awesome.svg/2000px-Shopping_cart_font_awesome.svg.png" id="cartimg" alt="">Cart
+                                <div class="cart hide"></div>   
+                              </div>
+                            </li>
+                          </ul>
+                </div>
+                <div id="error"></div>
+                <div id="discounted" class="row"></div>
+            </div>
+            <div class="modal fade " id="exampleModalCenter"  >
+                <div class="modal-dialog modal-dialog-centered" >
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalCenterTitle"></h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="images"></div>
+                        Brand : <span id="brand"></span>  Gender : <span id="category"></span>
+                        <br>
+                        Original Price : <span id="price"></span>
+                        <br>
+                        Color : <div id="color" style="height:40px;width:40px;border: 2px solid black"></div>
+                        <br>
+                        Product Description <div id="desc"></div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" id="addtocart" class="btn btn-primary">Add To Cart</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="css/bootstrap/bootstrap.min.js"></script>
+</body>
+</html>
